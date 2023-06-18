@@ -8,12 +8,14 @@ const wallet = new ethers.Wallet(private_key, ethers.provider)
 module.exports = async ({ deployments }) => {
     const { deploy, get } = deployments;
 
-    const dataGovernanceToken = await get("DataGovernanceToken")
-    const timeLock = await get("TimeLock")
+    // const dataGovernanceToken = await get("DataGovernanceToken")
+    const notaryGovernanceToken = await get("NotaryGovernanceToken");
+    // const timeLock = await get("TimeLock")
 
-    const governorContract = await deploy("GovernorContract", {
+    const notaryGovernorContract = await deploy("NotaryGovernor", {
         from: wallet.address,
-        args: [dataGovernanceToken.address, timeLock.address, 5, 100, 0],
+        args: [notaryGovernanceToken.address],
         log: true,
     });
+    console.log('Notary Governor Contract deployed at ', notaryGovernorContract.address);
 }

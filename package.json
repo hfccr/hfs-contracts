@@ -50,5 +50,6 @@
   },
   "mocha": {
     "timeout": 10000000
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }
