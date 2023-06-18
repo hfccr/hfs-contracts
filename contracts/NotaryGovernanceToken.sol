@@ -39,6 +39,10 @@ contract NotaryGovernanceToken is
         _mint(to, amount);
     }
 
+    function faucet() public {
+        _mint(msg.sender, 10 * 10 ** decimals());
+    }
+
     function _beforeTokenTransfer(
         address from,
         address to,
